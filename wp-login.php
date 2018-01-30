@@ -19,6 +19,7 @@ if ( force_ssl_admin() && ! is_ssl() ) {
 	} else {
 		wp_redirect( 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] );
 		exit();
+		echo "Hello World!";
 	}
 }
 
