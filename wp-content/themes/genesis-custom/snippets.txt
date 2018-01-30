@@ -1,0 +1,33 @@
+I
+// Register widget areas.
+genesis_register_sidebar( array(
+	'id'          => 'front-page-1',
+	'name'        => __( 'Front Page 1', 'genesis-sample' ),
+	'description' => __( 'This is a widget that goes on the front page.', 'genesis-sample' ),
+) );
+
+
+add_action( 'genesis_meta', 'my_homepage_setup' );
+/**
+ * Add widget support for homepage.
+ *
+ */
+function my_homepage_setup() {
+
+	if ( is_active_sidebar( 'front-page-1' ) )  {
+
+		 //* Add front page 1 widget
+		add_action( 'genesis_after_header', 'display_front_page_1_widget' );
+
+	}
+}
+
+// Add markup to display front page widgets.
+function display_front_page_1_widget() {
+
+	genesis_widget_area( 'front-page-1', array(
+		'before' => '<div class="featured-widget-area"><div class="wrap">',
+		'after'  => '</div></div>',
+	) );
+
+}
